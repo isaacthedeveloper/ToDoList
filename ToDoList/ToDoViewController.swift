@@ -35,6 +35,7 @@ class ToDoViewController: UITableViewController {
     @IBOutlet weak var isCompleteButton: UIButton!
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var dueDatePickerView: UIDatePicker!
+    
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveButtonTapped: UIBarButtonItem!
     
@@ -66,29 +67,31 @@ class ToDoViewController: UITableViewController {
         todo = ToDo(title: title, isCompleted: isComplete, dueDate: dueDate, notes: notes)
     }
     // MARK: - Table View Delegate
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let normalCellHeight = CGFloat(44)
-        let largeCellHeight = CGFloat(200)
-        
-        switch(indexPath) {
-        case [1,0]: // Due Date Cell - Section 1, Row 0
-            return isPickerHidden ? normalCellHeight : largeCellHeight
-        case [2,0]: // Notes Cell = Section 2, Row 0
-            return largeCellHeight
-        default: return normalCellHeight
-        }
-    }
-    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let normalCellHeight = CGFloat(44)
+//        let largeCellHeight = CGFloat(200)
+//        switch (indexPath) {
+//        case [1,0]:
+//            return isPickerHidden ? normalCellHeight : largeCellHeight
+//        case [2,0]:
+//            return largeCellHeight
+//        default:
+//            return normalCellHeight
+//        }
+//    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch (indexPath) {
         case [2,0]:
             isPickerHidden = !isPickerHidden
-            dueDateLabel.textColor = isPickerHidden ? .black : tableView.tintColor
-            
+            dueDateLabel.textColor =
+                isPickerHidden ? .black : tableView.tintColor
+
             tableView.beginUpdates()
             tableView.endUpdates()
-        default: break
+
+        default:
+            break
         }
     }
 

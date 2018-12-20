@@ -14,6 +14,7 @@
 		730883C921CAD87000D8B384 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730883C821CAD87000D8B384 /* ToDo.swift */; };
 		730883CB21CAD98500D8B384 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730883CA21CAD98500D8B384 /* ToDoTableViewController.swift */; };
 		730883CD21CB0FE700D8B384 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730883CC21CB0FE700D8B384 /* ToDoViewController.swift */; };
+		737C517B21CC1086006FBC0C /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C517A21CC1086006FBC0C /* ToDoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		730883C821CAD87000D8B384 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		730883CA21CAD98500D8B384 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		730883CC21CB0FE700D8B384 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		737C517A21CC1086006FBC0C /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				730883B621CAD27900D8B384 /* AppDelegate.swift */,
 				730883BA21CAD27900D8B384 /* Main.storyboard */,
 				730883CC21CB0FE700D8B384 /* ToDoViewController.swift */,
+				737C517A21CC1086006FBC0C /* ToDoCell.swift */,
 				730883C821CAD87000D8B384 /* ToDo.swift */,
 				730883CA21CAD98500D8B384 /* ToDoTableViewController.swift */,
 				730883BD21CAD27A00D8B384 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				730883B721CAD27900D8B384 /* AppDelegate.swift in Sources */,
 				730883CB21CAD98500D8B384 /* ToDoTableViewController.swift in Sources */,
 				730883C921CAD87000D8B384 /* ToDo.swift in Sources */,
+				737C517B21CC1086006FBC0C /* ToDoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,14 +7,24 @@
 
 import UIKit
 
-class ToDoTableViewController: UITableViewController {
+class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
+    func checkMarkTapped(sender: ToDoCell) {
+        if let indexPath = tableView.indexPath(for: sender) {
+            var todo = todos[indexPath.row]
+            todo.isCompleted = !todo.isCompleted
+            todos[indexPath.row] = todo
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(todos)
+        }
+    }
+    
     // The VC will manage the model objects, so create the empty array,
     var todos: [ToDo] = []
     
+    
+    
     // Rather than using a string as the cell identifier, you can use this constant.
-    struct PropertyKeys {
-        let ToDoCell = "ToDoCellIdentifier"
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +43,16 @@ class ToDoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Attempt to dequeue a cell, fail if unsuccesful.
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PropertyKeys.init().ToDoCell) else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") as? ToDoCell else {
             fatalError("Could not dequeue cell")
         }
         // Get the model out of the array that corresponds to the cell being displayed
          // todos is the model array, and we use indexPath.row to grab the particular cell.
         let todo = todos[indexPath.row]
         // Update the cells properties, retrun the cell from the method.
-        cell.textLabel?.text = todo.title
+        cell.titleLabel?.text = todo.title
+        cell.isComplete.isSelected = todo.isCompleted
+        cell.delegate = self
         return cell
     }
     
@@ -54,6 +66,7 @@ class ToDoTableViewController: UITableViewController {
             todos.remove(at: indexPath.row) // Remove model object and this indexPaths row.
             // Delete from tableview
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(todos)
         }
     }
     
@@ -77,6 +90,7 @@ class ToDoTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        ToDo.saveToDos(todos)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
