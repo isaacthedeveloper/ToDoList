@@ -9,6 +9,7 @@
 import UIKit
 
 class ToDoViewController: UITableViewController {
+    // Since this table view will deal with one model at a time, add an optional model property.
     var todo: ToDo?
     
 
@@ -26,7 +27,7 @@ class ToDoViewController: UITableViewController {
         updateDueDateLabel(date: dueDatePickerView.date)
         updateSaveButtonState()
     }
-    
+    // If date picker should be hidden
     var isPickerHidden = true
     
     // MARK: - Outlets
@@ -61,6 +62,7 @@ class ToDoViewController: UITableViewController {
         let isComplete = isCompleteButton.isSelected
         let dueDate = dueDatePickerView.date
         let notes = notesTextView.text
+        // Set the properties to a value.
         todo = ToDo(title: title, isCompleted: isComplete, dueDate: dueDate, notes: notes)
     }
     // MARK: - Table View Delegate
@@ -69,16 +71,16 @@ class ToDoViewController: UITableViewController {
         let largeCellHeight = CGFloat(200)
         
         switch(indexPath) {
-        case [1,0]: // Due Date Cell
+        case [1,0]: // Due Date Cell - Section 1, Row 0
             return isPickerHidden ? normalCellHeight : largeCellHeight
-        case [2,0]: // Notes Cell
+        case [2,0]: // Notes Cell = Section 2, Row 0
             return largeCellHeight
-            
         default: return normalCellHeight
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch (indexPath) {
         case [2,0]:
             isPickerHidden = !isPickerHidden
@@ -86,7 +88,6 @@ class ToDoViewController: UITableViewController {
             
             tableView.beginUpdates()
             tableView.endUpdates()
-            
         default: break
         }
     }
