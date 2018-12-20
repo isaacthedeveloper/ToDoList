@@ -9,11 +9,20 @@
 import UIKit
 
 class ToDoViewController: UITableViewController {
+    var todo: ToDo?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // calculate 24 hours in the future.
-        dueDatePickerView.date = Date().addingTimeInterval(24*60*60)
+        if let todo = todo {
+            navigationItem.title = "To-Do"
+            titleTextField.text = todo.title
+            isCompleteButton.isSelected = todo.isCompleted
+            dueDatePickerView.date = todo.dueDate
+            notesTextView.text = todo.notes
+        } else {
+            dueDatePickerView.date = Date().addingTimeInterval(24*60*60)
+        }
         updateDueDateLabel(date: dueDatePickerView.date)
         updateSaveButtonState()
     }
@@ -43,7 +52,17 @@ class ToDoViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == "saveUnwind" else {return}
+        
+        let title = titleTextField.text!
+        let isComplete = isCompleteButton.isSelected
+        let dueDate = dueDatePickerView.date
+        let notes = notesTextView.text
+        todo = ToDo(title: title, isCompleted: isComplete, dueDate: dueDate, notes: notes)
+    }
     // MARK: - Table View Delegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let normalCellHeight = CGFloat(44)

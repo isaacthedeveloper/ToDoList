@@ -58,6 +58,27 @@ class ToDoTableViewController: UITableViewController {
     
     // MARK: - Navigation
     @IBAction func unwindToToDoList(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind" else { return }
+        let sourceViewController = segue.source as! ToDoViewController
         
+        if let todo = sourceViewController.todo {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                todos[selectedIndexPath.row] = todo
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: todos.count, section: 0)
+                todos.append(todo)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            let toDoViewController = segue.destination as! ToDoViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedToDo = todos[indexPath.row]
+            toDoViewController.todo = selectedToDo
+        }
     }
 } // End of class.

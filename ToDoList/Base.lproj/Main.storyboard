@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Rwv-Y8-lxK" kind="show" identifier="showDetails" id="qjD-WX-p7z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -187,7 +190,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="i86-Ht-DAv">
                             <connections>
-                                <segue destination="Po5-ys-nEK" kind="unwind" identifier="SaveUnwind" unwindAction="unwindToToDoListWithSegue:" id="Sef-sa-Fbx"/>
+                                <segue destination="Po5-ys-nEK" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="Sef-sa-Fbx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -242,4 +245,7 @@
         <image name="Empty Image" width="44" height="44"/>
         <image name="Highlighted Image" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qjD-WX-p7z"/>
+    </inferredMetricsTieBreakers>
 </document>
