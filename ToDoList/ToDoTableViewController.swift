@@ -21,11 +21,6 @@ class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
     // The VC will manage the model objects, so create the empty array,
     var todos: [ToDo] = []
     
-    
-    
-    // Rather than using a string as the cell identifier, you can use this constant.
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
